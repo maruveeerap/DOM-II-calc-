@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>calcgrid</title>
+    <style>
+        #box{
+            width: 25%;
+            margin: auto;
+            height: 450px;
+            padding: 50px;
+            padding-top: 100px;
+            margin-top: 100px;
+            border: 0px solid black;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(5,80px);
+            gap: 20px;
+        }
+        #box>div{
+            border: 0px solid black;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        #box>div:hover{
+            background-color: teal;
+            color: white;
+        }
+        #box>div:nth-child(1){
+            grid-area: 1/1/2/span 4;
+        }
+        #box>div:nth-child(5){
+            color: white;
+            background-color: black;
+
+        }
+        #box>div:nth-child(9){
+            color: white;
+            background-color: black;
+
+        }
+        #box>div:nth-child(13){
+            color: white;
+            background-color: black;
+
+        }
+        #box>div:nth-child(17){
+            color: white;
+            background-color: black;
+
+        }
+        #box>div:nth-child(16){
+            color: white;
+            background-color: black;
+
+        }
+        #box>div:nth-child(14){
+            color: white;
+            background-color: orange;
+
+        }
+        #display{
+            background-color: rgb(47, 45, 45);
+            color: wheat;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <div id="display"></div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>+</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>-</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>*</div>
+        <div>C</div>
+        <div>0</div>
+        <div>=</div>
+        <div>/</div>
+       
+
+    </div>
+    
+</body>
+</html>
+<script>
+    let bag=""
+    let keys=document.querySelectorAll("#box>div")
+    keys.forEach(function(el){
+        el.addEventListener("click",calC)
+    })
+    function calC(event){
+        let targetNumber=event.target.innerText;
+        if(targetNumber=="C"){
+            bag=""
+            document.querySelector("#display").innerText=""
+        }else if(targetNumber=="="){
+            console.log(eval(bag))
+            document.querySelector("#display").innerText=eval(bag)
+
+        }else{
+            bag=bag+targetNumber;
+            document.querySelector("#display").innerText=bag
+
+
+        }
+        
+        
+    }
+
+</script>
